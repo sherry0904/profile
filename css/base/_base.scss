@@ -1,0 +1,44 @@
+@charset "UTF-8";
+// 共用變數與函數
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');  // -思源黑體
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');  // -思源宋體
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+
+/* Font */
+$font-family-base: 'Noto Sans TC','PingFangTC', 'Heiti TC', 'Microsoft JhengHei', 'Noto Sans Myanmar','Arial', 'sans-serif';
+$font-family-eng: 'Merriweather Sans';
+
+body,
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $font-family-base;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    background-color: #eeeeee; 
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cormorant Garamond';
+}
+
+h2 {
+  font-size: 9vmin;
+  font-family: $font-family-eng;
+  font-weight: 800;
+  font-style: italic;
+}

@@ -1,0 +1,30 @@
+.intro {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh;
+
+    &__text {
+        display: grid;
+        align-content: center;
+        padding: 0 1rem;
+        height: 100%;
+
+        p {
+            font-size: 2vmin;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+    }
+
+    .image-wrapper {
+        display: grid;
+        align-items:  center;
+        width: 100%;
+        height: auto;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

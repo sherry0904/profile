@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+// 第三方套件
+@import "vendor/swiper.min";   //5.3.1版
+@import "vendor/locomotive";   //4.1.3版
+
+// 共用變數
+@import "base/base";   
+
+// 函式
+@import "helper/variable";
+@import "helper/ellipsis";
+@import "helper/img-scale";
+@import "helper/px2em";
+@import "helper/mixin";
+
+//-共同組件
+@import "layout/header";   
+@import "layout/nav";
+@import "layout/footer";
+@import "layout/popup";
+@import "layout/list";
+
+//-各頁面主要內容
+@import "page/index";
+
+//-各區塊內容
+@import "section/intro";
+@import "section/experience";
+
+// 各組件
+
+
