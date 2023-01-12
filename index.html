@@ -90,22 +90,44 @@
         </div>
       </section>
     </div>
-    <section class="sectionPin" id="sectionPin">
+    <section class="sectionPin award" id="sectionPin">
       <div class="pin-wrap">
-        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua.</h2>
-        <img
-          src="https://images.pexels.com/photos/5207262/pexels-photo-5207262.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=900"
-          alt="">
-        <video  data-scroll data-scroll-class="videoPlay" data-scroll-repeat="true" class="project-video__video"
-          id="video" muted="" autoplay="" loop="" playsinline=""
-          src="https://thierrychopain.com/wp-content/uploads/2021/12/VIDEO_AGIL.mp4"></video>
+        <div class="award__item">
+          <div class="award__intro">
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</h2>
+          </div>
+          <div class="award__video">
+            <video  data-scroll data-scroll-class="videoPlay" data-scroll-repeat="true" class="project-video__video"
+            id="video01" muted="" playsinline=""
+            src="https://thierrychopain.com/wp-content/uploads/2021/12/VIDEO_AGIL.mp4"></video>
+          </div>
+        </div>
+        <div class="award__item">
+          <div class="award__intro">
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</h2>
+          </div>
+          <div class="award__video">
+            <video  data-scroll data-scroll-class="videoPlay" data-scroll-repeat="true" class="project-video__video"
+            id="video02" muted="" playsinline=""
+            src="https://thierrychopain.com/wp-content/uploads/2021/12/VIDEO_AGIL.mp4"></video>
+          </div>
+        </div>
+        <div class="award__item">
+          <div class="award__intro">
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.</h2>
+          </div>
+          <div class="award__video">
+            <video  data-scroll data-scroll-class="videoPlay" data-scroll-repeat="true" class="project-video__video"
+            id="video03" muted="" playsinline=""
+            src="https://thierrychopain.com/wp-content/uploads/2021/12/VIDEO_AGIL.mp4"></video>
+          </div>
+        </div>
         <!-- <img
-        src="https://images.pexels.com/photos/3618545/pexels-photo-3618545.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=900"
-        alt=""> -->
-        <img
           src="https://images.pexels.com/photos/3618545/pexels-photo-3618545.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=900"
-          alt="">
+          alt=""> -->
 
       </div>
     </section>
@@ -240,116 +262,10 @@
   <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
 
-  <!-- 
+  
   <script src="js/ga.js"></script>
-  <script src="js/main.js"></script> -->
+  <script src="js/skollerAni.js"></script>
 
-  <script>
-    $(document).ready(function () {
-
-      const scroller = new LocomotiveScroll({
-        el: document.querySelector('[data-scroll-container]'),
-        smooth: true
-      })
-
-      // scrollTo(target, offset)
-
-      gsap.registerPlugin(ScrollTrigger)
-
-      scroller.on('scroll', ScrollTrigger.update)
-
-      const video = document.getElementById("video");
-      // scroller.on('scroll', () => {
-      //   if (video.classList.contains("videoPlay")) {
-      //     video.play();
-      //   } else {
-      //     video.pause();
-      //   }
-      // })
-
-      ScrollTrigger.scrollerProxy(
-        '.wrapper', {
-          scrollTop(value) {
-            return arguments.length ?
-              scroller.scrollTo(value, 0, 0) :
-              scroller.scroll.instance.scroll.y
-          },
-          getBoundingClientRect() {
-            return {
-              left: 0,
-              top: 0,
-              width: window.innerWidth,
-              height: window.innerHeight
-            }
-          },
-          // pinType: document.querySelector(".wrapper").style.transform ? "transform" : "fixed"
-        }
-        
-      )
-
-
-      ScrollTrigger.create({
-        trigger: '.image-mask',
-        scroller: '.wrapper',
-        start: 'top+=30% 50%',
-        end: 'bottom-=40% 50%',
-        animation: gsap.to('.image-mask', {
-          backgroundSize: '120%'
-        }),
-        scrub: 2,
-        // markers: true
-      })
-
-      let pinBoxes = document.querySelectorAll(".pin-wrap > *");
-      let pinWrap = document.querySelector(".pin-wrap");
-      let pinWrapWidth = pinWrap.offsetWidth;
-      let horizontalScrollLength = pinWrapWidth - window.innerWidth;
-
-      // Pinning and horizontal scrolling
-
-      gsap.to(".pin-wrap", {
-        scrollTrigger: {
-          scroller: ".wrapper", //locomotive-scroll
-          scrub: true,
-          trigger: "#sectionPin",
-          pin: true,
-          // anticipatePin: 1,
-          start: "top top",
-          end: pinWrapWidth
-        },
-        x: -horizontalScrollLength,
-        ease: "none"
-      });
-
-      ScrollTrigger.create({
-        trigger: video,
-        start: "bottom top",
-        end: pinWrapWidth - video.offsetWidth,
-        markers: true,
-        scroller:".wrapper",
-        onEnter: () => video.play(),
-        onEnterBack: () => video.play(),
-        onLeave: () => video.pause(),
-        onLeaveBack: () => video.pause(),
-      });
-
-      // 暫 測試用
-      let firstScroll = false;
-
-      ScrollTrigger.addEventListener('refresh', () => {
-        scroller.update()
-        if (!firstScroll) {
-          scroller.scrollTo("#list", 0, 0)
-          firstScroll = true
-        }
-        console.log("ScrollTrigger refresh")
-      })
-
-
-      ScrollTrigger.refresh()
-
-    });
-  </script>
 
   <!-- 範例 -->
   <!-- gsap.to( "動畫物件選擇器",{
@@ -357,9 +273,9 @@
         trigger: "觸發選擇器",
         pin: true,   // 當動畫執行中的時候，讓觸發選擇器置頂
         start: "top top", 
-        // 當觸發選擇器的頂端 (左邊的 top) 碰到檢視區頂端 (右邊的 top) 時啟用
+        // (物件開始位置, 卷軸開始位置)
         end: "+=500", 
-        // 捲動 500px 後結束動畫
+        // (物件結束位置, 卷軸結束位置) , 也可以設卷軸捲動多少結束動畫(+=300)
         scrub: 1, 
         // 是否根據捲動程度決定動畫完成程度，
         // 如果填寫數字，則在會延遲 n 秒後才到定位。
@@ -379,6 +295,16 @@
         }
       }
   } ); -->
+
+  <!-- ScrollTrigger.matchMedia({
+    // 跟設定css 一樣  如果畫面不小於 992px 執行
+    "(min-width: 992px)": () => { 執行內容 },
+    // 畫面不小於 768px 執行
+    "(min-width: 768px)": () => { 執行內容 },
+    // 不管畫面大小，我都執行
+    "all": () => { 執行內容 },
+  }); -->
+  
 
 
 </body>

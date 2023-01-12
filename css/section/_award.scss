@@ -1,0 +1,21 @@
+.award {
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__intro {
+        margin: 0 5vw;
+        width: 30vw;
+        h2 {
+            font-size: 2vmin;
+        }
+    }
+    &__video {
+        margin: 0 5vw;
+        width: 50vw;
+        video {
+            width: 100%;
+        }
+    }
+}

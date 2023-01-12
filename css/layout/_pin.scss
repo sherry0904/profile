@@ -1,0 +1,14 @@
+.sectionPin {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    left: 0;
+}
+
+.pin-wrap {
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 50px 10vw;
+}

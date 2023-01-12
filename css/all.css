@@ -710,16 +710,6 @@ h2 {
   padding: 50px 10vw;
 }
 
-.pin-wrap > * {
-  min-width: 60vw;
-  padding: 0 5vw;
-}
-
-.pin-wrap h2 {
-  font-size: 2vmin;
-  max-width: 400px;
-}
-
 .container .section-0 {
   margin-top: 20vh;
   text-align: center;
@@ -872,5 +862,29 @@ h2 {
 .intro .image-wrapper img {
   width: 100%;
   height: auto;
+}
+
+.award__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.award__intro {
+  margin: 0 5vw;
+  width: 30vw;
+}
+
+.award__intro h2 {
+  font-size: 2vmin;
+}
+
+.award__video {
+  margin: 0 5vw;
+  width: 50vw;
+}
+
+.award__video video {
+  width: 100%;
 }
 /*# sourceMappingURL=all.css.map */
