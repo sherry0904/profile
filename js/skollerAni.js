@@ -37,17 +37,17 @@ skollerAni = function () {
 		)
 
 
-		ScrollTrigger.create({
-			trigger: '.image-mask',
-			scroller: '.wrapper',
-			start: 'top+=30% 50%',
-			end: 'bottom-=40% 50%',
-			animation: gsap.to('.image-mask', {
-				backgroundSize: '120%'
-			}),
-			scrub: 2,
-			// markers: true
-		})
+		// ScrollTrigger.create({
+		// 	trigger: '.image-mask',
+		// 	scroller: '.wrapper',
+		// 	start: 'top+=30% 50%',
+		// 	end: 'bottom-=40% 50%',
+		// 	animation: gsap.to('.image-mask', {
+		// 		backgroundSize: '120%'
+		// 	}),
+		// 	scrub: 2,
+		// 	// markers: true
+		// })
 
 		let pinWrap = document.querySelector(".pin-wrap");
 		let pinWrapWidth = pinWrap.offsetWidth;
@@ -70,35 +70,48 @@ skollerAni = function () {
 		});
 
 		setTimeout(()=>{
-			let endPos = $(".award__item").width()*0.6
+			let startPos = $(".award__item").width()
+			let endPos = $(".award__item").width()*0.9
+			let videoH = $(".award__video video").height();
+			let paddingLeft = $(".pin-wrap").css("padding-left");
+			let padding = parseInt(paddingLeft)*2
+			let gap = padding / ($(".award__video video").length)
+			// console.log("paddingLeft: "+paddingLeft)
+			// console.log("padding: "+padding)
+			// console.log("gap: "+gap)
+
 			gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
-				console.log(id * $(".award__item").width(), id)
-				ScrollTrigger.create({
+				ScrollTrigger.create({ 
 					trigger: videobox,
-					start: () => `${id * endPos} ${$(".award__video")[0].getBoundingClientRect().bottom} `,
-					end: () => `${(id + 1) * endPos} ${$(".award__video")[0].getBoundingClientRect().top}`,
-					markers: true,
+					start: () => `${(startPos*id)+videoH-(gap*id)} ${$(".award__video video")[0].getBoundingClientRect().bottom}`,
+					end: () => `${((id + 1) * endPos)-(gap*id)} ${$(".award__video video")[0].getBoundingClientRect().bottom}`,
+					// markers: true,
 					scroller: ".wrapper",
 					onEnter: () => videobox.play(),
 					onEnterBack: () => videobox.play(),
 					onLeave: () => videobox.pause(),
 					onLeaveBack: () => videobox.pause(),
+					onUpdate: ()=>{
+						// console.log((videoH * (id + 1)))
+					}
 				});
 			});
 			scroller.on('scroll', () => {
-
+				
 			})
-		},500);
+		},1000);
 
 		// 暫 測試用
 		let firstScroll = false;
 
 		ScrollTrigger.addEventListener('refresh', () => {
 			scroller.update()
-			if (!firstScroll) {
-				scroller.scrollTo(".award", 0, 0)
-				firstScroll = true
-			}
+			// if (!firstScroll) {
+			// 	firstScroll = true
+			// 	setTimeout(()=>{
+			// 		scroller.scrollTo(".works", 0, 0)
+			// 	},2000)
+			// }
 			console.log("ScrollTrigger refresh")
 		})
 
