@@ -70,22 +70,17 @@ skollerAni = function () {
 		});
 
 		setTimeout(()=>{
-			let startPos = $(".award__item").width()
-			let endPos = $(".award__item").width()*0.9
-			let videoH = $(".award__video video").height();
-			let paddingLeft = $(".pin-wrap").css("padding-left");
-			let padding = parseInt(paddingLeft)*2
-			let gap = padding / ($(".award__video video").length)
-			// console.log("paddingLeft: "+paddingLeft)
-			// console.log("padding: "+padding)
-			// console.log("gap: "+gap)
+			let itemW = $(".award__item").width()
+			let videoW = $(".award__video video").width();
+			let videoT = $(".award__video video").position().top
 
 			gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
+				console.log(videobox)
 				ScrollTrigger.create({ 
 					trigger: videobox,
-					start: () => `${(startPos*id)+videoH-(gap*id)} ${$(".award__video video")[0].getBoundingClientRect().bottom}`,
-					end: () => `${((id + 1) * endPos)-(gap*id)} ${$(".award__video video")[0].getBoundingClientRect().bottom}`,
-					// markers: true,
+					start: () => `${(itemW * id) - (videoT * id)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
+					end: () => `${(itemW * id) - (videoT * id)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
+					markers: true,
 					scroller: ".wrapper",
 					onEnter: () => videobox.play(),
 					onEnterBack: () => videobox.play(),
