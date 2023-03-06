@@ -10,7 +10,7 @@
         height: 100%;
 
         p {
-            font-size: 2vmin;
+            font-size: 2.5vmin;
             line-height: 1.8;
             font-weight: 400;
         }
@@ -21,10 +21,19 @@
         align-items:  center;
         width: 100%;
         height: auto;
+    }
 
+    .image-box {
+        position: relative;
+        width: 100%;
+        padding-bottom: 66.25%;
+        height: 0;
         img {
-            width: 100%;
-            height: auto;
-        }
+                position: absolute;
+                object-fit: cover;
+                object-position: center top;
+                width: 100%;
+                height: 100%;
+            }
     }
 }
