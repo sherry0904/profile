@@ -5,9 +5,11 @@ main = function () {
 	function init() {
 		console.log('main is loaded.');
 
-		$(window).scroll(function(){
-		
+		$(".wrapper").scroll(function(){
+			console.log("scroll")
 		});
+
+		$(window).scrollTop($("#award").offset().top);
 
 	}
 

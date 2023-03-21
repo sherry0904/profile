@@ -1035,12 +1035,22 @@ h2 {
 }
 
 .award__intro {
-  padding: 0 5vw;
+  padding: 0 2vw;
   width: 30vw;
 }
 
 .award__intro h2 {
-  font-size: 2vmin;
+  font-size: 3vmin;
+  margin-bottom: 30px;
+}
+
+.award__intro p {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.award__intro li {
+  line-height: 2;
 }
 
 .award__video {

@@ -5,10 +5,18 @@
         align-items: center;
     }
     &__intro {
-        padding: 0 5vw;
+        padding: 0 2vw;
         width: 30vw;
         h2 {
-            font-size: 2vmin;
+            font-size: 3vmin;
+            margin-bottom: 30px;
+        }
+        p {
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+        li {
+            line-height: 2;
         }
     }
     &__video {
