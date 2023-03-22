@@ -1,14 +1,26 @@
 .sectionPin {
-    height: 100vh;
+    height: auto;
     overflow: hidden;
     display: flex;
     left: 0;
 }
 
 .pin-wrap {
-    height: 100vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 50px 10vw;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 50px 5vw;
+}
+
+@media screen and (min-width: 992px) {
+    .sectionPin {
+        height: 100vh;
+    }
+    .pin-wrap {
+        height: 100vh;
+        flex-wrap: nowrap;
+        padding: 50px 0;
+    }
 }

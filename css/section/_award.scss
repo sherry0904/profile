@@ -1,12 +1,18 @@
 .award {
     &__item {
+        width: 100%;
+        flex: 0 0 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 10vw;
+        // border: 1px solid red;
     }
     &__intro {
         padding: 0 2vw;
-        width: 30vw;
+        width: 100%;
+        margin-bottom: 3vw;
         h2 {
             font-size: 3vmin;
             margin-bottom: 30px;
@@ -21,9 +27,27 @@
     }
     &__video {
         padding: 0 5vw;
-        width: 50vw;
+        width: 100%;
         video {
             width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .award {
+        &__item {
+            width: 100vw;
+            flex: 0 0 100vw;
+            flex-wrap: nowrap;
+            margin-bottom: 0;
+        }
+        &__intro {
+            width: 30vw;
+            margin-bottom: 0;
+        }
+        &__video {
+            width: 50vw;
         }
     }
 }

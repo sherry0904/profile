@@ -1,15 +1,90 @@
 skollerAni = function () {
 	//private menbers
+	let scroller;
 
 	//private methods
 	function init() {
 		console.log('skollerAni is loaded.');
 
-		const scroller = new LocomotiveScroll({
+		scroller = new LocomotiveScroll({
 			el: document.querySelector('[data-scroll-container]'),
 			smooth: true
 		})
 
+		if($(window).width()>992) {
+			videoPlay_pc();
+		}else {
+			videoPlay_mb();
+		}
+
+		$(window).scroll(()=>{
+			// console.log("scroll")
+		});
+
+	}
+
+	function videoPlay_mb(){
+			let windowH = $(window).height();
+			let awardTop = $(".award").offset().top;
+			let awardH = $(".award").height();
+			let $item01 = $(".award__item-01")
+			let $item02 = $(".award__item-02")
+			let $item03 = $(".award__item-03")
+			let items = [];
+			// console.log("windowH: "+windowH)
+
+			for(let i=0; i<$(".award__item").length; i++) {
+				items.push($(".award__item").eq(i));
+			}
+
+			console.log(items)
+
+			$(window).scroll(()=>{
+				let scrollTop = $(window).scrollTop();
+				console.log("scrollTop: "+scrollTop)
+				for(let i=0; i<$(".award__item").length; i++) {
+					console.log("item-"+i+": "+items[i].offset().top)
+					if(scrollTop > items[i].offset().top) {
+						items[i].find(".award__video__box")[0].play();
+						console.log(i + " : play")
+						// console.log(items[i].find(".award__video__box")[0])
+					}else if(scrollTop > (items[i].offset().top + items[i].outerHeight())) {
+						items[i].find(".award__video__box")[0].pause();
+						console.log(i + " : pause")
+					}
+				}
+			});
+	
+
+			// gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
+			// 	let $item = $(videobox).parents(".award__item");
+			// 	let itemH = $item.outerHeight();
+			// 	let itemTop = $item.offset().top;
+			// 	let scrollTop = $(window).scrollTop();
+			// 	console.log(scrollTop)
+			// 	ScrollTrigger.create({ 
+			// 		trigger: $item[0],
+			// 		start: () => `${0} itemH`, // (物件開始位置, 卷軸開始位置)
+			// 		end: () => `${itemH} ${awardTop + awardH}`, //(物件結束位置, 卷軸結束位置)
+			// 		markers: true,
+			// 		scroller: ".wrapper",
+			// 		onEnter: () => {
+			// 			videobox.play()
+			// 			console.log("onEnter")
+			// 		},
+			// 		onEnterBack: () => videobox.play(),
+			// 		onLeave: () => videobox.pause(),
+			// 		onLeaveBack: () => videobox.pause(),
+			// 		onUpdate: ()=>{
+			// 			// console.log((videoH * (id + 1)))
+			// 		}
+			// 	});
+			// });
+	}
+
+	// scrollAnimate
+	function videoPlay_pc(e) {
+		
 		// scrollTo(target, offset)
 
 		gsap.registerPlugin(ScrollTrigger)
@@ -70,9 +145,30 @@ skollerAni = function () {
 		});
 
 		setTimeout(() => {
+			let windowW = $(window).width();
 			let itemW = $(".award__item").width()
 			let videoW = $(".award__video video").width();
+			console.log("windowW: "+windowW)
+
 			let videoT = $(".award__video video").position().top
+
+			gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
+				console.log(videobox)
+				ScrollTrigger.create({ 
+					trigger: videobox,
+					start: () => `${(windowW * (1.5 * id))} ${videoT}`, // (物件開始位置, 卷軸開始位置)
+					end: () => `${(windowW * (1.5 * (id + 1)))} ${videoT}`, //(物件結束位置, 卷軸結束位置)
+					markers: true,
+					scroller: ".wrapper",
+					onEnter: () => videobox.play(),
+					onEnterBack: () => videobox.play(),
+					onLeave: () => videobox.pause(),
+					onLeaveBack: () => videobox.pause(),
+					onUpdate: ()=>{
+						// console.log((videoH * (id + 1)))
+					}
+				});
+			});
 
 			// gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
 			// 	console.log(videobox)
@@ -91,56 +187,57 @@ skollerAni = function () {
 			// 		}
 			// 	});
 			// });
-			// scroller.on('scroll', () => {
+			scroller.on('scroll', () => {
 
-			// })
-			const video01 = $("#video01")[0]
-			ScrollTrigger.create({
-				trigger: video01,
-				start: () => `${(itemW * 0) - (videoT * 0)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
-				end: () => `${(itemW * 0) - (videoT * 0)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
-				markers: true,
-				scroller: ".wrapper",
-				onEnter: () => player.playVideo(),
-				onEnterBack: () => player.playVideo(),
-				onLeave: () => player.pauseVideo(),
-				onLeaveBack: () => player.pauseVideo(),
-				onUpdate: () => {
-					// console.log((videoH * (id + 1)))
-				}
-			});
+			})
+			
+			// const video01 = $("#video01")[0]
+			// ScrollTrigger.create({
+			// 	trigger: video01,
+			// 	start: () => `${(itemW * 0) - (videoT * 0)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
+			// 	end: () => `${(itemW * 0) - (videoT * 0)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
+			// 	markers: true,
+			// 	scroller: ".wrapper",
+			// 	onEnter: () => player.playVideo(),
+			// 	onEnterBack: () => player.playVideo(),
+			// 	onLeave: () => player.pauseVideo(),
+			// 	onLeaveBack: () => player.pauseVideo(),
+			// 	onUpdate: () => {
+			// 		// console.log((videoH * (id + 1)))
+			// 	}
+			// });
 
-			const video02 = $("#video02")[0]
-			ScrollTrigger.create({
-				trigger: video02,
-				start: () => `${(itemW * 1) - (videoT * 1)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
-				end: () => `${(itemW * 1) - (videoT * 1)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
-				markers: true,
-				scroller: ".wrapper",
-				onEnter: () => video02.play(),
-				onEnterBack: () => video02.play(),
-				onLeave: () => video02.pause(),
-				onLeaveBack: () => video02.pause(),
-				onUpdate: () => {
-					// console.log((videoH * (id + 1)))
-				}
-			});
+			// const video02 = $("#video02")[0]
+			// ScrollTrigger.create({
+			// 	trigger: video02,
+			// 	start: () => `${(itemW * 1) - (videoT * 1)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
+			// 	end: () => `${(itemW * 1) - (videoT * 1)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
+			// 	markers: true,
+			// 	scroller: ".wrapper",
+			// 	onEnter: () => video02.play(),
+			// 	onEnterBack: () => video02.play(),
+			// 	onLeave: () => video02.pause(),
+			// 	onLeaveBack: () => video02.pause(),
+			// 	onUpdate: () => {
+			// 		// console.log((videoH * (id + 1)))
+			// 	}
+			// });
 
-			const video03 = $("#video03")[0]
-			ScrollTrigger.create({
-				trigger: video03,
-				start: () => `${(itemW * 2) - (videoT * 2)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
-				end: () => `${(itemW * 2) - (videoT * 2)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
-				markers: true,
-				scroller: ".wrapper",
-				onEnter: () => video03.play(),
-				onEnterBack: () => video03.play(),
-				onLeave: () => video03.pause(),
-				onLeaveBack: () => video03.pause(),
-				onUpdate: () => {
-					// console.log((videoH * (id + 1)))
-				}
-			});
+			// const video03 = $("#video03")[0]
+			// ScrollTrigger.create({
+			// 	trigger: video03,
+			// 	start: () => `${(itemW * 2) - (videoT * 2)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
+			// 	end: () => `${(itemW * 2) - (videoT * 2)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
+			// 	markers: true,
+			// 	scroller: ".wrapper",
+			// 	onEnter: () => video03.play(),
+			// 	onEnterBack: () => video03.play(),
+			// 	onLeave: () => video03.pause(),
+			// 	onLeaveBack: () => video03.pause(),
+			// 	onUpdate: () => {
+			// 		// console.log((videoH * (id + 1)))
+			// 	}
+			// });
 		}, 1000);
 
 		// 暫 測試用
@@ -159,17 +256,6 @@ skollerAni = function () {
 
 
 		ScrollTrigger.refresh()
-
-
-
-
-	}
-
-	// scrollAnimate
-	function scrollAnimate(el, time, top) {
-		$('html,body').animate({
-			scrollTop: $(el).offset().top - top
-		}, time);
 	}
 
 	function intoPage() {
@@ -191,39 +277,7 @@ skollerAni = function () {
 };
 
 var skollerAni = new skollerAni();
-var player;
 
-function onYouTubeIframeAPIReady() {
-	player = new YT.Player('video01', {
-		height: '390',
-		width: '640',
-		videoId: 'vFGlAPMyJc0',
-		playerVars: {
-			'playsinline': 1
-		},
-		events: {
-			// 'onReady': onPlayerReady,
-			// 'onStateChange': onPlayerStateChange
-		}
-	});
-}
-// The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-	event.target.playVideo();
-}
-// The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-	if (event.data == YT.PlayerState.PLAYING && !done) {
-		setTimeout(stopVideo, 6000);
-		done = true;
-	}
-}
-function stopVideo() {
-	player.stopVideo();
-}
 
 
 
