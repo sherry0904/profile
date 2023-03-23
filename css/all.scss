@@ -14,6 +14,9 @@
 @import "helper/px2em";
 @import "helper/mixin";
 
+// 各組件
+@import "component/modal";   
+
 //-共同組件
 @import "layout/header";   
 @import "layout/nav";
@@ -31,6 +34,5 @@
 @import "section/award";
 @import "section/works";
 
-// 各組件
 
 

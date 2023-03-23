@@ -1,6 +1,6 @@
 .works {
     font-family: $font-family-eng;
-    padding: 5vw 0;
+    padding: 5vw 5vw;
     min-height: 100vh;
     &__title {
         margin-bottom: 4vmin;
@@ -10,29 +10,119 @@
         flex-wrap: wrap;
         justify-content: space-between;
     }
-    &__pic {
-        margin-bottom: 1vmin;
-    }
     &__item {
-        width: 30%;
+        width: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;   
-        margin-bottom: 3vmin;
+        margin-bottom: 9vmin;
+        color: rgb(33,37,41);
+        text-decoration: none;
+        cursor: pointer;
+    }
+    &__pic {
+        position: relative;
+        margin-bottom: 2vmin;
+        width: 100%;
+        height: 0;
+        padding-bottom: calc(1080 / 1920 * 100%);
+        box-shadow: 0 1px 1px rgba(0,0,0,0.1), 
+        0 2px 2px rgba(0,0,0,0.1), 
+        0 4px 4px rgba(0,0,0,0.1), 
+        0 8px 8px rgba(0,0,0,0.1),
+        0 16px 16px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: 0.5s;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 4px rgba(0,0,0,0.2) inset, 
+                        0 0 8px rgba(0,0,0,0.2) inset, 
+                        0 0 16px rgba(0,0,0,0.2) inset, 
+                        0 0 32px rgba(0,0,0,0.2) inset,
+                        0 0 64px rgba(0,0,0,0.2) inset;
+            z-index: 1;
+            transition: 0.5s 0.2s;
+        }
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transition: 0.5s 0.1s;
+        }
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 2px rgba(0,0,0,0.1), 
+                        0 4px 4px rgba(0,0,0,0.1), 
+                        0 8px 8px rgba(0,0,0,0.1), 
+                        0 16px 16px rgba(0,0,0,0.1),
+                        0 32px 32px rgba(0,0,0,0.1);
+            &::before {
+                box-shadow: 0 0 0px rgba(0,0,0,0) inset, 
+                            0 0 0px rgba(0,0,0,0) inset, 
+                            0 0 0px rgba(0,0,0,0) inset, 
+                            0 0 0px rgba(0,0,0,0) inset,
+                            0 0 0px rgba(0,0,0,0) inset;
+            }
+            img {
+                transform: scale(1.05);
+                transform-origin: center center;
+            }
+        }
     }
     &__name {
-        font-size: 2.5vmin;
+        font-size: 4.5vmin;
         margin-bottom: 0;
+        color: rgb(33,37,41);
+        text-decoration: none;
     }
     &__tag {
         display: flex;
         p {
-            font-size: 1.5vmin;
+            font-size: 3vmin;
             display: inline-block;
-            margin-right: 1vmin;
+            margin-right: 2vmin;
             margin-bottom: 0;
             font-style: italic;
+            color: rgb(33,37,41);
+            text-decoration: none;
+        }
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .works {
+        padding: 5vw 0;
+        &__item {
+            width: 48%;
+            margin-bottom: 3vmin;
+        }
+        &__pic {
+            margin-bottom: 1vmin;
+        }
+        &__name {
+            font-size: 2.5vmin;
+        }
+        &__tag {
+            p {
+                font-size: 1.5vmin;
+                margin-right: 1vmin;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .works {
+        &__item {
+            width: 31%;
         }
     }
 }

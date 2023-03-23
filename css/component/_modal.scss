@@ -1,0 +1,43 @@
+.modal {
+    .btn-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #ccc;
+    }
+    &-dialog {
+        padding: 50px 0;
+    }
+    &-content {
+        margin: 0 auto;
+        width: auto;
+        border-radius: 0;
+    }
+    &-body {
+        padding: 0;
+        line-height: 0;
+        video {
+            width: 100%
+        }
+    }
+    .video-h {
+        width: 350px;
+    }
+    .video-v {
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        &-dialog {
+            max-width: none;
+        }
+        .video-h {
+            width: 380px;
+        }
+        .video-h {
+            width: 730px;
+        }
+    }
+}

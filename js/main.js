@@ -5,20 +5,37 @@ main = function () {
 	function init() {
 		console.log('main is loaded.');
 
-		$(".wrapper").scroll(function(){
-			console.log("scroll")
-		});
+		$(window).scrollTop($("#works").offset().top);
+		// $("#videoModal").modal('show')
+		$("#videoModal").on('hidden.bs.modal',  function(){
+			$("#videoModal video").removeClass("video-h video-v");
+			$("#videoModal video").attr("src", "");
+		})
 
-		$(window).scrollTop($("#award").offset().top);
 
+		$(".works__item").on("click", function(e){
+			e.preventDefault();
+			let type = $(this).data("type")
+			let path = $(this).attr("href");
+			if(type === "link") {
+				window.open(path);
+				console.log("excute: link")
+			}else {
+				let direction = $(this).data("direction");
+				if(direction == "h") {
+					$("#videoModal video").addClass("video-h");
+				}else {
+					$("#videoModal video").addClass("video-v");
+				}
+				path = path.replace("#","");
+				$("#videoModal video").attr("src", "./video/"+path+".mp4");
+				$("#videoModal").modal('show');
+				$("#videoModal video")[0].play();
+				console.log("excute: video")
+			}
+		})
 	}
 
-	// scrollAnimate
-	function scrollAnimate(el,time,top) {
-		$('html,body').animate({
-			scrollTop: $(el).offset().top -top
-		}, time);
-	}
 	function intoPage(){
 
 	}

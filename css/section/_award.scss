@@ -26,10 +26,13 @@
         }
     }
     &__video {
-        padding: 0 5vw;
+        padding: 0;
         width: 100%;
         video {
             width: 100%;
+        }
+        &-03 {
+            width: 70%;
         }
     }
 }
@@ -47,7 +50,11 @@
             margin-bottom: 0;
         }
         &__video {
+            padding: 0 5vw;
             width: 50vw;
+            &-03 {
+                width: 65vmin;
+            }
         }
     }
 }

@@ -29,39 +29,6 @@
 <body>
 
   <div class="wrapper" data-scroll-container>
-    <div class="lineTest lineTest-01"
-      style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background-color: red;
-        z-index: 999;
-      "
-    ></div>
-    <div class="lineTest lineTest-02"
-      style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background-color: red;
-        z-index: 999;
-      "
-    ></div>
-    <div class="lineTest lineTest-03"
-      style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background-color: red;
-        z-index: 999;
-      "
-    ></div>
     <div class="container d-none">
       <section class="intro">
         <div data-scroll data-scroll-speed="3" class="intro__text">
@@ -125,7 +92,7 @@
     </div>
     <section class="sectionPin award" id="award">
       <div class="pin-wrap">
-        <div class="award__item award__item-01">
+        <div class="award__item award__item-01" data-scroll data-scroll-call="award__item-01">
           <div class="award__intro">
             <!-- <h2>全聯小時達 - <br/>不用等到最後的晚餐</h2>
             <p>【2022數位奇點獎作品】</p>
@@ -139,7 +106,7 @@
               應該不圖個如果除非，想做的的發明好真的好，北到手機表示很，麼真是個這家。論自由還覺遊戲偷偷說發現不然。沒有來就而且冥王星。但還是去球製作別發生的，理的光不過我真的覺前是，用擔心塔我講我沒，還是我得應該好這大家轉，的耶問題那個題也不知很可愛店長：快樂一半天一厲害天沒想。能讓分享比意義⋯要多個禮拜基本上，因為一樣對啊真或者像。是這就是真正的樣子，快樂美麗這真的一直以，是：要用了，己想來的因為我也有，在沒上的都是的那種滿意。
             </p>
           </div>
-          <div class="award__video">
+          <div class="award__video award__video-01">
             <video  data-scroll data-scroll-class="videoPlay" data-scroll-repeat="true" class="award__video__box"
             id="video01" 
             muted
@@ -147,7 +114,7 @@
             src="https://thierrychopain.com/wp-content/uploads/2021/12/VIDEO_AGIL.mp4"></video>
           </div>
         </div>
-        <div class="award__item award__item-02">
+        <div class="award__item award__item-02" data-scroll data-scroll-call="award__item-02">
           <div class="award__intro">
             <!-- <h2>全聯中秋烤焦圖鑑</h2>
             <p>【2021數位奇點獎作品】</p>
@@ -163,7 +130,12 @@
               應該不圖個如果除非，想做的的發明好真的好，北到手機表示很，麼真是個這家。論自由還覺遊戲偷偷說發現不然。沒有來就而且冥王星。但還是去球製作別發生的，理的光不過我真的覺前是，用擔心塔我講我沒，還是我得應該好這大家轉，的耶
             </p>
           </div>
-          <div class="award__video">
+          <div class="award__video award__video-02">
+            <!-- <video  data-scroll data-scroll-class="videoPlay" data-scroll-repeat="true" class="award__video__box award__video__box-03"
+            id="video03" 
+            muted
+            playsinline=""
+            src="./video/pxBarbecueFestival.mp4"></video> -->
             <video  data-scroll data-scroll-class="videoPlay" data-scroll-repeat="true" class="award__video__box award__video__box-02"
             id="video02" 
             muted
@@ -172,7 +144,7 @@
             
           </div>
         </div>
-        <div class="award__item award__item-03">
+        <div class="award__item award__item-03" data-scroll data-scroll-call="award__item-03">
           <div class="award__intro">
             <!-- <h2>黑人牙膏【用微笑綻放自己】</h2>
             <p>【2021數位奇點獎作品】</p>
@@ -183,17 +155,28 @@
               應該不圖個如果除非，想做的的發明好真的好，北到手機表示很，麼真是個這家。論自由還覺遊戲偷偷說發現不然。沒有來就而且冥王星。但還是去球製作別發生的，理的光不過我真的覺前是，用擔心塔我講我沒，還是我得應該好這大家轉，的耶問題那個題也不知很可愛店長：快樂一半天一厲害天沒想。能讓分享比意義⋯要多個禮拜基本上，因為一樣對啊真或者像。是這就是真正的樣子，快樂美麗這真的一直以，是：要用了，己想來的因為我也有，在沒上的都是的那種滿意。
             </p>
           </div>
-          <div class="award__video">
+          <div class="award__video award__video-03" style="position: relative;">
+            <div class="mask"
+              style="position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+              "
+            ></div>
             <video  data-scroll data-scroll-class="videoPlay" data-scroll-repeat="true" class="award__video__box award__video__box-03"
             id="video03" 
             muted
             playsinline=""
-            src="https://thierrychopain.com/wp-content/uploads/2021/12/VIDEO_AGIL.mp4"></video>
+            src="./video/darlie.mp4"></video>
+            <!-- <video  data-scroll data-scroll-class="videoPlay" data-scroll-repeat="true" class="award__video__box award__video__box-03"
+            id="video03" 
+            muted
+            playsinline=""
+            src="https://thierrychopain.com/wp-content/uploads/2021/12/VIDEO_AGIL.mp4"></video> -->
           </div>
         </div>
-        <!-- <img
-          src="https://images.pexels.com/photos/3618545/pexels-photo-3618545.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=900"
-          alt=""> -->
 
       </div>
     </section>
@@ -201,58 +184,162 @@
     <section class="container works" id="works">
       <h2 class="works__title">consectetur</h2>
       <div class="works__list">
-        <div class="works__item">
+        <a href="https://www.dynacw.com.tw/" data-type="link" class="works__item">
           <div class="works__pic">
+            <img src="./images/worksPic/dynacw.jpg">
             <img src="https://picsum.photos/300/200">
           </div>
           <h3 class="works__name">
+            <!-- 華康字型官網 -->
             Lorem ipsum
           </h3>
           <div class="works__tag">
             <p>#Lorem</p>
             <p>#ipsum</p>
+            <!-- <p>#Javascript</p>
+            <p>#Bootstrap</p>
+            <p>#Git</p>
+            <p>#Scss</p>
+            <p>#共同開發</p> -->
           </div>
-        </div>
-        <div class="works__item">
+        </a>
+        <a href="https://event.pxmart.com.tw/activity/2022Ghost/" data-type="link" class="works__item">
           <div class="works__pic">
+            <img src="./images/worksPic/ghostfestivalmeta.jpg">
+            <img src="https://picsum.photos/300/200">
+          </div>
+          <h3 class="works__name">
+            <!-- 全聯中元宇宙 -->
+            Lorem ipsum
+          </h3>
+          <div class="works__tag">
+            <p>#Javascript</p>
+            <p>#SCSS</p>
+            <p>#MVVM</p>
+            <p>#共同開發</p>
+          </div>
+        </a>
+        <a href="https://www.hpvaway.com.tw/hpvband.html" data-type="link" class="works__item">
+          <div class="works__pic">
+            <img src="./images/worksPic/MSDshot.jpg">
             <img src="https://picsum.photos/300/200">
           </div>
           <h3 class="works__name">
             Lorem ipsum
+            <!-- MSD超前部署 這shot正潮 -->
           </h3>
           <div class="works__tag">
-            <p>#Lorem</p>
-            <p>#ipsum</p>
+            <p>#RWD</p>
+            <p>#SCSS</p>
+            <p>#Javascript</p>
           </div>
-        </div>
-        <div class="works__item">
+        </a>
+        <a href="#TGL-musicCampaign" data-type="video" data-direction="h" class="works__item">
           <div class="works__pic">
+            <img src="./images/worksPic/samsungAboard.jpg">
             <img src="https://picsum.photos/300/200">
           </div>
           <h3 class="works__name">
             Lorem ipsum
+            <!-- The Glenlivet 這一首｜這一杯｜這一刻 - 屬於你的時刻單曲 -->
           </h3>
           <div class="works__tag">
-            <p>#Lorem</p>
-            <p>#ipsum</p>
+            <p>#串接資料</p>
+            <p>#GSAP</p>
+            <p>#html2canvas</p>
+            <p>#Swiper</p>
           </div>
-        </div>
-        <div class="works__item">
+        </a>
+        <a href="#samsungAboard" data-type="video" data-direction="v" class="works__item">
           <div class="works__pic">
+            <img src="./images/worksPic/samsungAboard.jpg">
             <img src="https://picsum.photos/300/200">
           </div>
           <h3 class="works__name">
             Lorem ipsum
+            <!-- 三星夜遊登機計畫 -->
           </h3>
           <div class="works__tag">
-            <p>#Lorem</p>
-            <p>#ipsum</p>
+            <p>#串接資料</p>
+            <p>#GSAP</p>
+            <p>#LINE LIFF</p>
           </div>
-        </div>
+        </a>
+        <a href="https://www.volkswagentaiwan.com.tw/voice_of_volkswagen-ers_off/index.html" data-type="link" class="works__item">
+          <div class="works__pic">
+            <img src="./images/worksPic/volkswagenVoice.jpg">
+            <img src="https://picsum.photos/300/200">
+          </div>
+          <h3 class="works__name">
+            Lorem ipsum
+            <!-- 車主之聲｜Volkswagen -->
+          </h3>
+          <div class="works__tag">
+            <p>#SCSS</p>
+            <p>#Javascript</p>
+            <p>#RWD</p>
+          </div>
+        </a>
+        <a href="https://www.volkswagentaiwan.com.tw/ThenewTiguan/index.html" data-type="link" class="works__item">
+          <div class="works__pic">
+            <img src="./images/worksPic/tiguan.jpg">
+            <img src="https://picsum.photos/300/200">
+          </div>
+          <h3 class="works__name">
+            Lorem ipsum
+            <!-- The Tiguan | Volkswagen -->
+          </h3>
+          <div class="works__tag">
+            <p>#Vue</p>
+            <p>#Javascript</p>
+            <p>#GSAP</p>
+          </div>
+        </a>
+        <a href="#BarBEERStreetFood" data-type="video" data-direction="v" class="works__item">
+          <div class="works__pic">
+            <img src="./images/worksPic/BarBEERStreetFood.jpg">
+            <img src="https://picsum.photos/300/200">
+          </div>
+          <h3 class="works__name">
+            Lorem ipsum
+            <!-- KIRIN Bar 吃貨好禮立即刮 -->
+          </h3>
+          <div class="works__tag">
+            <p>#Javascript</p>
+            <p>#GSAP</p>
+            <p>#SCSS</p>
+          </div>
+        </a>
+        <a href="#powerman" data-type="video" data-direction="v" class="works__item">
+          <div class="works__pic">
+            <img src="./images/worksPic/powerman.jpg">
+            <img src="https://picsum.photos/300/200">
+          </div>
+          <h3 class="works__name">
+            Lorem ipsum
+            <!-- 統一PowerMate 夠POWER診療室 -->
+          </h3>
+          <div class="works__tag">
+            <p>#Javascript</p>
+            <p>#GSAP</p>
+            <p>#SCSS</p>
+          </div>
+        </a>
       </div>
     </section>
 
+  </div>
 
+  <!-- video Modal -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-content">
+        <div class="modal-body">
+          <video controls muted src=""></video>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="lib/jquery-3.5.1.min.js"></script>

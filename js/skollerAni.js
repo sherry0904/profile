@@ -13,23 +13,16 @@ skollerAni = function () {
 
 		if($(window).width()>992) {
 			videoPlay_pc();
+			console.log("videoPlay_pc")
 		}else {
 			videoPlay_mb();
+			console.log("videoPlay_mb")
 		}
-
-		$(window).scroll(()=>{
-			// console.log("scroll")
-		});
 
 	}
 
 	function videoPlay_mb(){
 			let windowH = $(window).height();
-			let awardTop = $(".award").offset().top;
-			let awardH = $(".award").height();
-			let $item01 = $(".award__item-01")
-			let $item02 = $(".award__item-02")
-			let $item03 = $(".award__item-03")
 			let items = [];
 			// console.log("windowH: "+windowH)
 
@@ -37,49 +30,27 @@ skollerAni = function () {
 				items.push($(".award__item").eq(i));
 			}
 
-			console.log(items)
+			// console.log(items)
+
 
 			$(window).scroll(()=>{
 				let scrollTop = $(window).scrollTop();
-				console.log("scrollTop: "+scrollTop)
+				// console.log("scrollTop: "+scrollTop)
 				for(let i=0; i<$(".award__item").length; i++) {
-					console.log("item-"+i+": "+items[i].offset().top)
-					if(scrollTop > items[i].offset().top) {
+					// console.log("item-"+i+": "+items[i].offset().top)
+					let itemH = items[i].outerHeight();
+					let itemT = items[i].offset().top;
+					let adjustH = (windowH - itemH) / 2;
+					if(scrollTop > (itemT - adjustH) && scrollTop < (itemT + itemH)) {
 						items[i].find(".award__video__box")[0].play();
 						console.log(i + " : play")
-						// console.log(items[i].find(".award__video__box")[0])
-					}else if(scrollTop > (items[i].offset().top + items[i].outerHeight())) {
+					}else {
 						items[i].find(".award__video__box")[0].pause();
 						console.log(i + " : pause")
 					}
 				}
 			});
 	
-
-			// gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
-			// 	let $item = $(videobox).parents(".award__item");
-			// 	let itemH = $item.outerHeight();
-			// 	let itemTop = $item.offset().top;
-			// 	let scrollTop = $(window).scrollTop();
-			// 	console.log(scrollTop)
-			// 	ScrollTrigger.create({ 
-			// 		trigger: $item[0],
-			// 		start: () => `${0} itemH`, // (物件開始位置, 卷軸開始位置)
-			// 		end: () => `${itemH} ${awardTop + awardH}`, //(物件結束位置, 卷軸結束位置)
-			// 		markers: true,
-			// 		scroller: ".wrapper",
-			// 		onEnter: () => {
-			// 			videobox.play()
-			// 			console.log("onEnter")
-			// 		},
-			// 		onEnterBack: () => videobox.play(),
-			// 		onLeave: () => videobox.pause(),
-			// 		onLeaveBack: () => videobox.pause(),
-			// 		onUpdate: ()=>{
-			// 			// console.log((videoH * (id + 1)))
-			// 		}
-			// 	});
-			// });
 	}
 
 	// scrollAnimate
