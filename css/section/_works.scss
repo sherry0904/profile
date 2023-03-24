@@ -3,7 +3,7 @@
     padding: 5vw 5vw;
     min-height: 100vh;
     &__title {
-        margin-bottom: 4vmin;
+        margin-bottom: 6vmin;
     }
     &__list {
         display: flex;
@@ -82,6 +82,7 @@
         margin-bottom: 0;
         color: rgb(33,37,41);
         text-decoration: none;
+        line-height: 1.5;
     }
     &__tag {
         display: flex;
@@ -100,15 +101,19 @@
 @media screen and (min-width: 576px) {
     .works {
         padding: 5vw 0;
+        &__title {
+            margin-bottom: 6vmin;
+        }
         &__item {
             width: 48%;
-            margin-bottom: 3vmin;
+            margin-bottom: 5vmin;
         }
         &__pic {
-            margin-bottom: 1vmin;
+            margin-bottom: 2vmin;
         }
         &__name {
-            font-size: 2.5vmin;
+            font-size: 2vmin;
+            margin-bottom: 1vmin;
         }
         &__tag {
             p {
@@ -122,7 +127,10 @@
 @media screen and (min-width: 768px) {
     .works {
         &__item {
-            width: 31%;
+            width: 30%;
+        }
+        &__name {
+            font-size: 2.3vmin;
         }
     }
 }

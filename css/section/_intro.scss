@@ -1,16 +1,15 @@
 .intro {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    height: 100vh;
-
+    width: 100%;
+    height: auto;
+    padding: 15vw 2vw 26vw;
     &__text {
         display: grid;
         align-content: center;
-        padding: 0 1rem;
+        padding: 00;
         height: 100%;
 
         p {
-            font-size: 2.5vmin;
+            font-size: 4.5vmin;
             line-height: 1.8;
             font-weight: 400;
         }
@@ -37,5 +36,20 @@
                 width: 100%;
                 height: 100%;
             }
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .intro {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        height: 100vh;
+        padding: 0;
+        &__text {
+            padding: 0 1rem;
+            p {
+                font-size: 2.5vmin;
+            }
+        }
     }
 }

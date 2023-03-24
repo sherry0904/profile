@@ -11,6 +11,49 @@ skollerAni = function () {
 			smooth: true
 		})
 
+		gsap.registerPlugin(ScrollTrigger)
+
+		scroller.on('scroll', ScrollTrigger.update)
+		scroller.on('scroll', function () {
+
+		})
+
+		ScrollTrigger.scrollerProxy(
+			'.wrapper', {
+				scrollTop(value) {
+					return arguments.length ?
+						scroller.scrollTo(value, 0, 0) :
+						scroller.scroll.instance.scroll.y
+				},
+				getBoundingClientRect() {
+					return {
+						left: 0,
+						top: 0,
+						width: window.innerWidth,
+						height: window.innerHeight
+					}
+				},
+				// pinType: document.querySelector(".wrapper").style.transform ? "transform" : "fixed"
+			}
+		)
+
+		// 暫 測試用
+		let firstScroll = false;
+
+		ScrollTrigger.addEventListener('refresh', () => {
+			scroller.update()
+			// if (!firstScroll) {
+			// 	firstScroll = true
+			// 	setTimeout(()=>{
+			// 		scroller.scrollTo(".works", 0, 0)
+			// 	},2000)
+			// }
+			console.log("ScrollTrigger refresh")
+		})
+
+		ScrollTrigger.refresh();
+
+
 		if($(window).width()>992) {
 			videoPlay_pc();
 			console.log("videoPlay_pc")
@@ -18,6 +61,12 @@ skollerAni = function () {
 			videoPlay_mb();
 			console.log("videoPlay_mb")
 		}
+
+		$(window).resize(() => {
+			ScrollTrigger.refresh();
+			// scrollTo(target, offset)
+			console.log("resize")
+		});
 
 	}
 
@@ -43,10 +92,10 @@ skollerAni = function () {
 					let adjustH = (windowH - itemH) / 2;
 					if(scrollTop > (itemT - adjustH) && scrollTop < (itemT + itemH)) {
 						items[i].find(".award__video__box")[0].play();
-						console.log(i + " : play")
+						// console.log(i + " : play")
 					}else {
 						items[i].find(".award__video__box")[0].pause();
-						console.log(i + " : pause")
+						// console.log(i + " : pause")
 					}
 				}
 			});
@@ -55,33 +104,6 @@ skollerAni = function () {
 
 	// scrollAnimate
 	function videoPlay_pc(e) {
-		
-		// scrollTo(target, offset)
-
-		gsap.registerPlugin(ScrollTrigger)
-
-		scroller.on('scroll', ScrollTrigger.update)
-
-		ScrollTrigger.scrollerProxy(
-			'.wrapper', {
-			scrollTop(value) {
-				return arguments.length ?
-					scroller.scrollTo(value, 0, 0) :
-					scroller.scroll.instance.scroll.y
-			},
-			getBoundingClientRect() {
-				return {
-					left: 0,
-					top: 0,
-					width: window.innerWidth,
-					height: window.innerHeight
-				}
-			},
-			// pinType: document.querySelector(".wrapper").style.transform ? "transform" : "fixed"
-		}
-
-		)
-
 
 		// ScrollTrigger.create({
 		// 	trigger: '.image-mask',
@@ -109,7 +131,7 @@ skollerAni = function () {
 				pin: true,
 				// anticipatePin: 1,
 				start: "top top",
-				end: pinWrapWidth
+				end: pinWrapWidth,
 			},
 			x: -horizontalScrollLength,
 			ease: "none"
@@ -123,30 +145,12 @@ skollerAni = function () {
 
 			let videoT = $(".award__video video").position().top
 
-			gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
-				console.log(videobox)
-				ScrollTrigger.create({ 
-					trigger: videobox,
-					start: () => `${(windowW * (1.5 * id))} ${videoT}`, // (物件開始位置, 卷軸開始位置)
-					end: () => `${(windowW * (1.5 * (id + 1)))} ${videoT}`, //(物件結束位置, 卷軸結束位置)
-					markers: true,
-					scroller: ".wrapper",
-					onEnter: () => videobox.play(),
-					onEnterBack: () => videobox.play(),
-					onLeave: () => videobox.pause(),
-					onLeaveBack: () => videobox.pause(),
-					onUpdate: ()=>{
-						// console.log((videoH * (id + 1)))
-					}
-				});
-			});
-
 			// gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
 			// 	console.log(videobox)
 			// 	ScrollTrigger.create({ 
 			// 		trigger: videobox,
-			// 		start: () => `${(itemW * id) - (videoT * id)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
-			// 		end: () => `${(itemW * id) - (videoT * id)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
+			// 		start: () => `${(windowW * (1.5 * id))} ${videoT}`, // (物件開始位置, 卷軸開始位置)
+			// 		end: () => `${(windowW * (1.5 * (id + 1)))} ${videoT}`, //(物件結束位置, 卷軸結束位置)
 			// 		markers: true,
 			// 		scroller: ".wrapper",
 			// 		onEnter: () => videobox.play(),
@@ -158,75 +162,27 @@ skollerAni = function () {
 			// 		}
 			// 	});
 			// });
-			scroller.on('scroll', () => {
 
-			})
-			
-			// const video01 = $("#video01")[0]
-			// ScrollTrigger.create({
-			// 	trigger: video01,
-			// 	start: () => `${(itemW * 0) - (videoT * 0)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
-			// 	end: () => `${(itemW * 0) - (videoT * 0)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
-			// 	markers: true,
-			// 	scroller: ".wrapper",
-			// 	onEnter: () => player.playVideo(),
-			// 	onEnterBack: () => player.playVideo(),
-			// 	onLeave: () => player.pauseVideo(),
-			// 	onLeaveBack: () => player.pauseVideo(),
-			// 	onUpdate: () => {
-			// 		// console.log((videoH * (id + 1)))
-			// 	}
-			// });
+			gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
+				console.log(videobox)
+				ScrollTrigger.create({ 
+					trigger: videobox,
+					start: () => `${(itemW * id) - (videoT * id)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
+					end: () => `${(itemW * id) - (videoT * id)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
+					// markers: true,
+					scroller: ".wrapper",
+					onEnter: () => videobox.play(),
+					onEnterBack: () => videobox.play(),
+					onLeave: () => videobox.pause(),
+					onLeaveBack: () => videobox.pause(),
+					onUpdate: ()=>{
+						// console.log((videoH * (id + 1)))
+					}
+				});
+			});
+	
+		}, 500);
 
-			// const video02 = $("#video02")[0]
-			// ScrollTrigger.create({
-			// 	trigger: video02,
-			// 	start: () => `${(itemW * 1) - (videoT * 1)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
-			// 	end: () => `${(itemW * 1) - (videoT * 1)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
-			// 	markers: true,
-			// 	scroller: ".wrapper",
-			// 	onEnter: () => video02.play(),
-			// 	onEnterBack: () => video02.play(),
-			// 	onLeave: () => video02.pause(),
-			// 	onLeaveBack: () => video02.pause(),
-			// 	onUpdate: () => {
-			// 		// console.log((videoH * (id + 1)))
-			// 	}
-			// });
-
-			// const video03 = $("#video03")[0]
-			// ScrollTrigger.create({
-			// 	trigger: video03,
-			// 	start: () => `${(itemW * 2) - (videoT * 2)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
-			// 	end: () => `${(itemW * 2) - (videoT * 2)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
-			// 	markers: true,
-			// 	scroller: ".wrapper",
-			// 	onEnter: () => video03.play(),
-			// 	onEnterBack: () => video03.play(),
-			// 	onLeave: () => video03.pause(),
-			// 	onLeaveBack: () => video03.pause(),
-			// 	onUpdate: () => {
-			// 		// console.log((videoH * (id + 1)))
-			// 	}
-			// });
-		}, 1000);
-
-		// 暫 測試用
-		let firstScroll = false;
-
-		ScrollTrigger.addEventListener('refresh', () => {
-			scroller.update()
-			// if (!firstScroll) {
-			// 	firstScroll = true
-			// 	setTimeout(()=>{
-			// 		scroller.scrollTo(".works", 0, 0)
-			// 	},2000)
-			// }
-			console.log("ScrollTrigger refresh")
-		})
-
-
-		ScrollTrigger.refresh()
 	}
 
 	function intoPage() {

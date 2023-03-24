@@ -1,4 +1,8 @@
 .award {
+    &__title {
+        position: static;
+        margin-bottom: 6vw;
+    }
     &__item {
         width: 100%;
         flex: 0 0 100%;
@@ -6,23 +10,32 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        margin-bottom: 10vw;
-        // border: 1px solid red;
+        margin-bottom: 0;
+        padding: 14vw 0;
+        border-bottom: 1px solid #ccc;
+        &:nth-child(2) {
+            padding-top: 0;
+        }
+        &:last-child {
+            border: none;
+        }
     }
     &__intro {
         padding: 0 2vw;
         width: 100%;
         margin-bottom: 3vw;
         h2 {
-            font-size: 3vmin;
-            margin-bottom: 30px;
+            font-size: 6vmin;
+            margin-bottom: 3vw;
         }
         p {
             margin-bottom: 0;
             font-weight: 600;
+            font-size: 4.5vmin;
         }
         li {
             line-height: 2;
+            font-size: 3.5vmin;
         }
     }
     &__video {
@@ -39,21 +52,43 @@
 
 @media screen and (min-width: 992px) {
     .award {
+        &__title {
+            position: absolute;
+            top: 15vmin;
+            left: 12vw;
+            margin-bottom: 0;
+        }
         &__item {
             width: 100vw;
             flex: 0 0 100vw;
             flex-wrap: nowrap;
             margin-bottom: 0;
+            padding: 0;
+            border: none;
         }
         &__intro {
             width: 30vw;
             margin-bottom: 0;
+            h2 {
+                font-size: 3vmin;
+                margin-bottom: 30px;
+            }
+        
+            p {
+                font-size: 2vmin;
+                margin-bottom: 0.8vmin;
+            }
+        
+            li {
+                line-height: 2;
+                font-size: 1.7vmin;
+            }
         }
         &__video {
             padding: 0 5vw;
             width: 50vw;
             &-03 {
-                width: 65vmin;
+                width: 55vmin;
             }
         }
     }

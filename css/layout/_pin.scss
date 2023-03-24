@@ -6,12 +6,13 @@
 }
 
 .pin-wrap {
+    position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     height: auto;
-    padding: 50px 5vw;
+    padding: 50px 5vw 20px;
 }
 
 @media screen and (min-width: 992px) {
