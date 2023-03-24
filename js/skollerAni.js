@@ -164,7 +164,7 @@ skollerAni = function () {
 			// });
 
 			gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
-				console.log(videobox)
+				// console.log(videobox)
 				ScrollTrigger.create({ 
 					trigger: videobox,
 					start: () => `${(itemW * id) - (videoT * id)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
