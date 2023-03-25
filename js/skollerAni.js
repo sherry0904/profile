@@ -79,32 +79,32 @@ skollerAni = function () {
 	}
 
 	function videoPlay_mb(){
-			let windowH = $(window).height();
-			let items = [];
-			// console.log("windowH: "+windowH)
+		let windowH = $(window).height();
+		let items = [];
+		// console.log("windowH: "+windowH)
 
-			for(let i=0; i<$(".award__item").length; i++) {
-				items.push($(".award__item").eq(i));
-			}
+		for(let i=0; i<$(".award__item").length; i++) {
+			items.push($(".award__item").eq(i));
+		}
 
-			// console.log(items)
-			scroller.on('scroll', function (obj) {
-				let scrollTop = $(window).scrollTop();
-				// console.log("scrollTop: "+scrollTop)
-				for (let i = 0; i < $(".award__item").length; i++) {
-					// console.log("item-"+i+": "+items[i].offset().top)
-					let itemH = items[i].outerHeight();
-					let itemT = items[i].offset().top;
-					let adjustH = (windowH - itemH) / 2;
-					if (scrollTop > (itemT - adjustH) && scrollTop < (itemT + itemH)) {
-						items[i].find(".award__video__box")[0].play();
-						// console.log(i + " : play")
-					} else {
-						items[i].find(".award__video__box")[0].pause();
-						// console.log(i + " : pause")
-					}
+		// console.log(items)
+		scroller.on('scroll', function (obj) {
+			let scrollTop = $(window).scrollTop();
+			// console.log("scrollTop: "+scrollTop)
+			for (let i = 0; i < $(".award__item").length; i++) {
+				// console.log("item-"+i+": "+items[i].offset().top)
+				let itemH = items[i].outerHeight();
+				let itemT = items[i].offset().top;
+				let adjustH = (windowH - itemH) / 2;
+				if (scrollTop > (itemT - adjustH) && scrollTop < (itemT + itemH)) {
+					items[i].find(".award__video__box")[0].play();
+					// console.log(i + " : play")
+				} else {
+					items[i].find(".award__video__box")[0].pause();
+					// console.log(i + " : pause")
 				}
-			})
+			}
+		})
 	
 	}
 

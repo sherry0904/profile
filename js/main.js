@@ -4,11 +4,7 @@ main = function () {
 	//private methods
 	function init() {
 		console.log('main is loaded.');
-		// setTimeout(() => {
-		// 	let targetTop = $("#award").offset().top
-		// 	$(".wrapper").css("transform", "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -" + targetTop + ", 0, 1)")
-		// }, 1000);
-		// $(window).scrollTop();
+;
 
 		$("#videoModal").on('hidden.bs.modal',  function(){
 			$("#videoModal video").removeClass("video-h video-v");
