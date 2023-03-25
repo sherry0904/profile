@@ -10,7 +10,7 @@ skollerAni = function () {
 			el: document.querySelector('[data-scroll-container]'),
 			smooth: true,
 			smoothMobile: true,
-			touchMultiplier: 5,
+			touchMultiplier: 2,
 		})
 
 		gsap.registerPlugin(ScrollTrigger)
