@@ -16,9 +16,7 @@ skollerAni = function () {
 		gsap.registerPlugin(ScrollTrigger)
 
 		scroller.on('scroll', ScrollTrigger.update)
-		scroller.on('scroll', function () {
 
-		})
 
 		ScrollTrigger.scrollerProxy(
 			'.wrapper', {
@@ -65,7 +63,16 @@ skollerAni = function () {
 		}
 
 		$(window).resize(() => {
+			// Kill off old ScrollTriggers
+			ScrollTrigger.getAll().forEach(ST => ST.kill());
 			// scrollTo(target, offset)
+			if ($(window).width() > 992) {
+				videoPlay_pc();
+				console.log("videoPlay_pc")
+			} else {
+				videoPlay_mb();
+				console.log("videoPlay_mb")
+			}
 			console.log("resize")
 		});
 
@@ -81,70 +88,62 @@ skollerAni = function () {
 			}
 
 			// console.log(items)
-
-
-			$(window).scroll(()=>{
+			scroller.on('scroll', function (obj) {
 				let scrollTop = $(window).scrollTop();
 				// console.log("scrollTop: "+scrollTop)
-				for(let i=0; i<$(".award__item").length; i++) {
+				for (let i = 0; i < $(".award__item").length; i++) {
 					// console.log("item-"+i+": "+items[i].offset().top)
 					let itemH = items[i].outerHeight();
 					let itemT = items[i].offset().top;
 					let adjustH = (windowH - itemH) / 2;
-					if(scrollTop > (itemT - adjustH) && scrollTop < (itemT + itemH)) {
+					if (scrollTop > (itemT - adjustH) && scrollTop < (itemT + itemH)) {
 						items[i].find(".award__video__box")[0].play();
 						// console.log(i + " : play")
-					}else {
+					} else {
 						items[i].find(".award__video__box")[0].pause();
 						// console.log(i + " : pause")
 					}
 				}
-			});
+			})
 	
 	}
 
 	// scrollAnimate
-	function videoPlay_pc(e) {
+	function videoPlay_pc() {
 
-		// ScrollTrigger.create({
-		// 	trigger: '.image-mask',
-		// 	scroller: '.wrapper',
-		// 	start: 'top+=30% 50%',
-		// 	end: 'bottom-=40% 50%',
-		// 	animation: gsap.to('.image-mask', {
-		// 		backgroundSize: '120%'
-		// 	}),
-		// 	scrub: 2,
-		// 	// markers: true
-		// })
+		// Recreate the STs
+		setupST();
+		setVideo();
 
-		let pinWrap = document.querySelector(".pin-wrap");
-		let pinWrapWidth = pinWrap.offsetWidth;
-		let horizontalScrollLength = pinWrapWidth - window.innerWidth;
+		function setupST(){
+			let pinWrap = document.querySelector(".pin-wrap");
+			let pinWrapWidth = pinWrap.offsetWidth;
+			let horizontalScrollLength = pinWrapWidth - window.innerWidth;
 
-		// Pinning and horizontal scrolling
+			// Pinning and horizontal scrolling
 
-		gsap.to(".pin-wrap", {
-			scrollTrigger: {
-				scroller: ".wrapper", //locomotive-scroll
-				scrub: true,
-				trigger: "#award",
-				pin: true,
-				// anticipatePin: 1,
-				start: "top top",
-				end: pinWrapWidth,
-			},
-			x: -horizontalScrollLength,
-			ease: "none"
-		});
+			gsap.to(".pin-wrap", {
+				scrollTrigger: {
+					scroller: ".wrapper", //locomotive-scroll
+					scrub: true,
+					trigger: "#award",
+					pin: true,
+					// anticipatePin: 1,
+					start: "top top",
+					end: pinWrapWidth,
+				},
+				x: -horizontalScrollLength,
+				ease: "none"
+			});
+		}
 
-		setTimeout(() => {
+		function setVideo() {
 			let windowW = $(window).width();
 			let itemW = $(".award__item").width()
 			let videoW = $(".award__video video").width();
-			console.log("windowW: "+windowW)
+			console.log("windowW: " + windowW)
 
-			let videoT = $(".award__video video").position().top
+			let videoT = $(".award__video .award__video__box-03").position().top
 
 			// gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
 			// 	console.log(videobox)
@@ -164,9 +163,10 @@ skollerAni = function () {
 			// 	});
 			// });
 
+
 			gsap.utils.toArray('.award__video video').forEach(function (videobox, id) {
 				// console.log(videobox)
-				ScrollTrigger.create({ 
+				ScrollTrigger.create({
 					trigger: videobox,
 					start: () => `${(itemW * id) - (videoT * id)} ${videoT}`, // (物件開始位置, 卷軸開始位置)
 					end: () => `${(itemW * id) - (videoT * id)} ${videoT - videoW}`, //(物件結束位置, 卷軸結束位置)
@@ -176,13 +176,16 @@ skollerAni = function () {
 					onEnterBack: () => videobox.play(),
 					onLeave: () => videobox.pause(),
 					onLeaveBack: () => videobox.pause(),
-					onUpdate: ()=>{
+					onUpdate: () => {
 						// console.log((videoH * (id + 1)))
 					}
 				});
 			});
+		}
+
+
+		
 	
-		}, 500);
 
 	}
 

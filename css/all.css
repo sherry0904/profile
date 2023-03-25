@@ -1124,6 +1124,7 @@ h2 {
 .award__title {
   position: static;
   margin-bottom: 6vw;
+  font-size: 12vmin !important;
 }
 
 .award__item {
@@ -1147,7 +1148,7 @@ h2 {
   border-bottom: 1px solid #ccc;
 }
 
-.award__item:nth-child(2) {
+.award__item:nth-child(1) {
   padding-top: 0;
 }
 
@@ -1186,16 +1187,17 @@ h2 {
   width: 100%;
 }
 
-.award__video-03 {
+.award__video-03, .award__video-01 {
   width: 70%;
 }
 
 @media screen and (min-width: 992px) {
   .award__title {
     position: absolute;
-    top: 15vmin;
-    left: 12vw;
+    top: -15vmin;
+    left: 2vw;
     margin-bottom: 0;
+    font-size: 9vmin !important;
   }
   .award__item {
     width: 100vw;
@@ -1209,6 +1211,7 @@ h2 {
     border: none;
   }
   .award__intro {
+    position: relative;
     width: 30vw;
     margin-bottom: 0;
   }
@@ -1228,7 +1231,7 @@ h2 {
     padding: 0 5vw;
     width: 50vw;
   }
-  .award__video-03 {
+  .award__video-03, .award__video-01 {
     width: 55vmin;
   }
 }
