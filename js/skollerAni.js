@@ -8,9 +8,9 @@ skollerAni = function () {
 
 		scroller = new LocomotiveScroll({
 			el: document.querySelector('[data-scroll-container]'),
-			// inertia: 0.5,
 			smooth: true,
 			smoothMobile: true,
+			touchMultiplier: 5,
 		})
 
 		gsap.registerPlugin(ScrollTrigger)
