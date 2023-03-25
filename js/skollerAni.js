@@ -8,7 +8,9 @@ skollerAni = function () {
 
 		scroller = new LocomotiveScroll({
 			el: document.querySelector('[data-scroll-container]'),
-			smooth: true
+			// inertia: 0.5,
+			smooth: true,
+			smoothMobile: true,
 		})
 
 		gsap.registerPlugin(ScrollTrigger)
@@ -41,7 +43,7 @@ skollerAni = function () {
 		let firstScroll = false;
 
 		ScrollTrigger.addEventListener('refresh', () => {
-			scroller.update()
+			scroller.update();
 			// if (!firstScroll) {
 			// 	firstScroll = true
 			// 	setTimeout(()=>{
@@ -63,7 +65,6 @@ skollerAni = function () {
 		}
 
 		$(window).resize(() => {
-			ScrollTrigger.refresh();
 			// scrollTo(target, offset)
 			console.log("resize")
 		});
