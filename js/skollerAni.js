@@ -6,55 +6,54 @@ skollerAni = function () {
 	function init() {
 		console.log('skollerAni is loaded.');
 
-		scroller = new LocomotiveScroll({
-			el: document.querySelector('[data-scroll-container]'),
-			smooth: true,
-			smoothMobile: true,
-			touchMultiplier: 2,
-		})
-
-		gsap.registerPlugin(ScrollTrigger)
-
-		scroller.on('scroll', ScrollTrigger.update)
-
-
-		ScrollTrigger.scrollerProxy(
-			'.wrapper', {
-				scrollTop(value) {
-					return arguments.length ?
-						scroller.scrollTo(value, 0, 0) :
-						scroller.scroll.instance.scroll.y
-				},
-				getBoundingClientRect() {
-					return {
-						left: 0,
-						top: 0,
-						width: window.innerWidth,
-						height: window.innerHeight
-					}
-				},
-				// pinType: document.querySelector(".wrapper").style.transform ? "transform" : "fixed"
-			}
-		)
-
-		// 暫 測試用
-		let firstScroll = false;
-
-		ScrollTrigger.addEventListener('refresh', () => {
-			scroller.update();
-			// if (!firstScroll) {
-			// 	firstScroll = true
-			// 	setTimeout(()=>{
-			// 		scroller.scrollTo(".works", 0, 0)
-			// 	},2000)
-			// }
-			console.log("ScrollTrigger refresh")
-		})
-
-		ScrollTrigger.refresh();
-
-
 		if($(window).width()>992) {
+
+			scroller = new LocomotiveScroll({
+				el: document.querySelector('[data-scroll-container]'),
+				smooth: true,
+				smoothMobile: true,
+				touchMultiplier: 2,
+			})
+	
+			gsap.registerPlugin(ScrollTrigger)
+	
+			scroller.on('scroll', ScrollTrigger.update)
+	
+			ScrollTrigger.scrollerProxy(
+				'.wrapper', {
+					scrollTop(value) {
+						return arguments.length ?
+							scroller.scrollTo(value, 0, 0) :
+							scroller.scroll.instance.scroll.y
+					},
+					getBoundingClientRect() {
+						return {
+							left: 0,
+							top: 0,
+							width: window.innerWidth,
+							height: window.innerHeight
+						}
+					},
+					// pinType: document.querySelector(".wrapper").style.transform ? "transform" : "fixed"
+				}
+			)
+	
+			// 暫 測試用
+			let firstScroll = false;
+	
+			ScrollTrigger.addEventListener('refresh', () => {
+				scroller.update();
+				// if (!firstScroll) {
+				// 	firstScroll = true
+				// 	setTimeout(()=>{
+				// 		scroller.scrollTo(".works", 0, 0)
+				// 	},2000)
+				// }
+				console.log("ScrollTrigger refresh")
+			})
+	
+			ScrollTrigger.refresh();
+
 			videoPlay_pc();
 			console.log("videoPlay_pc")
 		}else {
@@ -63,10 +62,11 @@ skollerAni = function () {
 		}
 
 		$(window).resize(() => {
-			// Kill off old ScrollTriggers
-			ScrollTrigger.getAll().forEach(ST => ST.kill());
+			
 			// scrollTo(target, offset)
 			if ($(window).width() > 992) {
+				// Kill off old ScrollTriggers
+				ScrollTrigger.getAll().forEach(ST => ST.kill());
 				videoPlay_pc();
 				console.log("videoPlay_pc")
 			} else {
@@ -88,7 +88,7 @@ skollerAni = function () {
 		}
 
 		// console.log(items)
-		scroller.on('scroll', function (obj) {
+		$(window).on('scroll', function () {
 			let scrollTop = $(window).scrollTop();
 			// console.log("scrollTop: "+scrollTop)
 			for (let i = 0; i < $(".award__item").length; i++) {
