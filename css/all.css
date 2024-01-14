@@ -973,7 +973,7 @@ h2 {
 .award__intro {
   padding: 0 2vw;
   width: 100%;
-  margin-bottom: 3vw;
+  margin-bottom: 7vw;
 }
 .award__intro h2 {
   font-size: 6vmin;
@@ -984,23 +984,29 @@ h2 {
   font-weight: 600;
   font-size: 4.5vmin;
 }
+.award__intro ul {
+  margin-bottom: 1vw;
+}
 .award__intro li {
   line-height: 2;
   font-size: 3.5vmin;
 }
 .award__skill {
-  border: 1px solid rgba(0, 0, 0, 0.7);
-  border-radius: 1vw;
-  padding: 1vw;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3vw;
+  padding: 3vw 4vw;
 }
 .award__skill h2 {
-  font-size: 6vmin;
-  margin-bottom: 3vw;
+  font-size: 4vmin;
+  margin-bottom: 1vw;
+  font-style: normal;
+  color: #3c3c3c;
 }
 .award__skill p {
   margin-bottom: 0;
-  font-weight: 600;
-  font-size: 4.5vmin;
+  font-weight: 400;
+  font-size: 3.5vmin;
+  color: #3c3c3c;
 }
 .award__video {
   padding: 0;
@@ -1041,6 +1047,9 @@ h2 {
   .award__intro p {
     font-size: 2vmin;
     margin-bottom: 0.8vmin;
+  }
+  .award__intro ul {
+    margin-bottom: 1rem;
   }
   .award__intro li {
     line-height: 2;

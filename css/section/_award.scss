@@ -24,7 +24,7 @@
     &__intro {
         padding: 0 2vw;
         width: 100%;
-        margin-bottom: 3vw;
+        margin-bottom: 7vw;
         h2 {
             font-size: 6vmin;
             margin-bottom: 3vw;
@@ -33,6 +33,9 @@
             margin-bottom: 0;
             font-weight: 600;
             font-size: 4.5vmin;
+        }
+        ul {
+            margin-bottom: 1vw;
         }
         li {
             line-height: 2;
@@ -40,17 +43,20 @@
         }
     }
     &__skill {
-        border: 1px solid rgba(#000, 0.7);
-        border-radius: 1vw;
-        padding: 1vw;
+        border: 1px solid rgba(#000, 0.3);
+        border-radius: 3vw;
+        padding: 3vw 4vw;
         h2 {
-            font-size: 6vmin;
-            margin-bottom: 3vw;
+            font-size: 4vmin;
+            margin-bottom: 1vw;
+            font-style: normal;
+            color: #3c3c3c;
         }
         p {
             margin-bottom: 0;
-            font-weight: 600;
-            font-size: 4.5vmin;
+            font-weight: 400;
+            font-size: 3.5vmin;
+            color: #3c3c3c;
         }
     }
     &__video {
@@ -96,6 +102,10 @@
                 margin-bottom: 0.8vmin;
             }
         
+            ul {
+                margin-bottom: 1rem;
+            } 
+
             li {
                 line-height: 2;
                 font-size: 1.7vmin;
