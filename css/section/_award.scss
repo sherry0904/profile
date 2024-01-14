@@ -39,6 +39,20 @@
             font-size: 3.5vmin;
         }
     }
+    &__skill {
+        border: 1px solid rgba(#000, 0.7);
+        border-radius: 1vw;
+        padding: 1vw;
+        h2 {
+            font-size: 6vmin;
+            margin-bottom: 3vw;
+        }
+        p {
+            margin-bottom: 0;
+            font-weight: 600;
+            font-size: 4.5vmin;
+        }
+    }
     &__video {
         padding: 0;
         width: 100%;
@@ -85,6 +99,23 @@
             li {
                 line-height: 2;
                 font-size: 1.7vmin;
+            }
+        }
+        &__skill {
+            border: 1px solid rgba(#000, 0.3);
+            border-radius: 1vw;
+            padding: 1vw;
+            h2 {
+                font-size: 1.8vmin;
+                margin-bottom: 5px;
+                font-style: normal;
+                color: #3c3c3c;
+            }
+            p {
+                margin-bottom: 0;
+                font-weight: 400;
+                font-size: 1.7vmin;
+                color: #3c3c3c;
             }
         }
         &__video {
